@@ -77,3 +77,5 @@ El objetivo del juego es que se lance el globo al aire y mediante los gestos de 
 se va a correr en un macm1 asi que se tiene la idea de emplear su camara para los gestos y usar un movil adnroid xiaomi 17t con sus camaras principales y gran angular para  la camara stereo, al ser una plataforma sin variabiliadad en el setup fisico
 Tambien existe la posibildad de usar solo una camara stereo para ambas funciones, empleando la camara del mac y la camara de selfie
 Sientete libre de adaptar esta idea general para que cumpla con TODOS los requisitos del proyecto
+
+Para el movil, las camaras esta alineadas horizontalmente y la distancia entre el centro de las lentes es 20mm
