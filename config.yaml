@@ -1,0 +1,100 @@
+# Camera configuration
+# Sources can be:
+#   int  -> local camera index (e.g. 0, 1)
+#   str  -> IP camera URL  (e.g. "http://192.168.1.100:8080/video")
+#   str  -> video file path (e.g. "data/left.mp4")
+#
+# Recommended setup with Xiaomi 17T phone as stereo pair + Mac camera for gestures:
+#   camera_left:  "http://<phone_ip>:8080/video"       # phone main camera (23mm)
+#   camera_right: "http://<phone_ip>:8081/video"       # phone ultra-wide (15mm)
+#   camera_gesture: 0                                   # Mac built-in camera
+
+camera_left: 0
+camera_right: 1
+camera_gesture: 0
+camera_width: 640
+camera_height: 480
+
+# Calibration
+calib_dir: "calibration/calib_data"
+chessboard_size: [9, 6]  # internal corners (cols, rows)
+square_size: 0.025  # meters
+
+# Balloon detection (HSV thresholds)
+balloon:
+  hue_low: 35
+  hue_high: 85
+  sat_low: 80
+  val_low: 50
+  min_contour_area: 200
+
+# Gesture
+gesture:
+  neutral_zone_duration: 2.0  # seconds to calibrate neutral hand position
+  move_threshold_x: 50  # pixels from neutral for horizontal movement
+  move_threshold_z: 40  # pixels from neutral for depth movement
+  pinch_threshold: 30   # pixels, thumb tip to index tip for GRAB
+
+# Game
+game:
+  balloon_min_height: 0.3  # meters, ground/floor level
+  balloon_launch_height: 0.5  # meters, minimum to trigger TRACKING
+  hitbox_radius: 0.2  # meters, robot catch radius
+  score_reset_delay: 3.0  # seconds between rounds
+
+# Rendering
+rendering:
+  scene_fps: 30
+  robot_move_speed: 0.5  # meters per second
+  floor_size: 3.0  # meters
+
+# Debug
+debug: false
+simulate: false
+simulate_video_left: ""
+simulate_video_right: ""
+
+###############################################################################
+#  Xiaomi 17T phone camera specifications (for calibration estimates)
+###############################################################################
+#  Main camera (Leica 23mm):
+#    Sensor:        1/1.55" Light Fusion 800 (approx 8.25 x 6.19 mm)
+#    Resolution:    50 MP (8192 x 6144) binned to 12.5 MP (4080 x 3072)
+#    Pixel size:    1.0 um native, 2.0 um 4-in-1 binned
+#    Focal length:  5.4 mm physical -> 23 mm full-frame equivalent
+#    Aperture:      f/1.7
+#    HFOV:          ~81 degrees
+#    Features:      OIS (DISABLE during calibration to fix intrinsics)
+#
+#  Ultra-wide camera (Leica 15mm):
+#    Sensor:        12 MP (likely ~1/2.55" = 5.6 x 4.2 mm)
+#    Focal length:  2.0 mm physical -> 15 mm full-frame equivalent
+#    Aperture:      f/2.2
+#    HFOV:          ~120 degrees
+#
+#  Stereo baseline (inter-camera distance on phone body):
+#    ~12 mm (approximate, varies by mount orientation)
+#    NOTE: rotate phone to LANDSCAPE so cameras are horizontally aligned
+#          for a proper horizontal stereo baseline
+#          main camera -> LEFT, ultra-wide -> RIGHT (when phone is landscape)
+###############################################################################
+#  Phone Streaming Setup Instructions:
+#  See: calibration/phone_setup.py --help
+###############################################################################
+phone_camera:
+  main:
+    focal_length_mm: 5.4
+    focal_length_eq_mm: 23
+    sensor_width_mm: 8.25
+    sensor_height_mm: 6.19
+  ultrawide:
+    focal_length_mm: 2.0
+    focal_length_eq_mm: 15
+    sensor_width_mm: 5.6
+    sensor_height_mm: 4.2
+  baseline_mm: 12.0
+  streaming_ports:
+    main: 8080
+    ultrawide: 8081
+  # Use DroidCam + IP Webcam: DroidCam creates /dev/video device for main cam,
+  # IP Webcam streams ultra-wide via MJPEG on port 8080

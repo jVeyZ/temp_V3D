@@ -1,0 +1,7 @@
+Usage
+pip install -r requirements.txt
+python calibration/capture_calib.py    # capture chessboard pairs
+python calibration/stereo_calibrate.py # compute calibration + report error
+python main.py                         # run the game
+python main.py --camera-left 0 --camera-right 1 --debug
+python main.py --simulate --video-left L.mp4 --video-right R.mp4

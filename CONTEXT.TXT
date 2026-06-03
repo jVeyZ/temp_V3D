@@ -1,0 +1,79 @@
+. PROYECTO 2: Posicionamiento 3D de puntos de interés con dos
+cámaras.
+A diferencia del proyecto anterior, este proyecto no restringe a un plano la
+situación de los elementos de la aplicación y utiliza dos cámaras para
+posicionar los objetos reales. Las tareas a realizar pueden ser las siguientes
+(aunque se pueden acordar alternativas con el profesor):
+2.1) Crear y mostrar una escena virtual más compleja (que sea un gemelo
+digital de la escena de la aplicación) y un visor que muestre la escena
+utilizando la funcionalidad de open3D o de un simulador de robótica
+interactivo. Esta escena virtual debe incluir al menos un objeto real y un
+robot virtual. (2 puntos)
+2.2) Detectar y seguir puntos de interés de los objetos reales en las imágenes
+y resolver el problema de correspondencias. Inicialmente se
+recomienda resolver los problemas de detección y correspondencias de
+manera manual, marcando con el ratón la posición de los puntos de
+interés (o centros de las regiones de interés) de cada objeto sobre las
+distintas imágenes. Después, resolver automáticamente los problemas de
+detección y correspondencias de los puntos de interés de todos los
+objetos utilizando funcionalidad de OpenCV, Yolo, Mediapipe, o ZED2. (2
+puntos)
+2.3) Posicionar, con respecto a un sistema 3D de referencia del mundo,
+los puntos de interés (o centros) de los objetos reales. Se recomienda
+resolver este problema calibrando las cámaras de la manera más
+precisa (deberSientete libre de adaptar esta idea general para que cumpla con TODOS los requisitos del proyectoéis reportar un indicador del error de calibración, junto con
+las imágenes de calibración) y aplicando estereovisión con la mejor
+configuración de cámaras posible. En el visor virtual, se deberá mostrar
+de manera continua la escena virtual actualizando la posición los objetos
+reales en movimiento según las posiciones estimadas. Además, se
+deberá proyectar los objetos y/o robots virtuales sobre las imágenes
+capturadas por una cámara generando realidad aumentada. (2 puntos)
+2.4) Desarrollar una interfaz humano-máquina basada en visión 3d. Para
+ello, se deberán seguir dos puntos de interés de al menos una persona
+presente en la escena utilizando funcionalidad de Yolo, MediaPipe o
+ZED2. Por ejemplo, los pies o los puntos de muñeca. En el caso de no
+poder utilizar la funcionalidad de Yolo, MediaPipe o ZED2 se podrán
+añadir marcadores sobre los puntos de interés. Después, desarrollar un
+clasificador de gestos, definiendo un conjunto finito de gestos según las
+posiciones relativas de los puntos de interés que permita actuar sobre los
+objetos virtuales de la aplicación. (2 puntos)
+2.5) Desarrollar una aplicación 3D que integre toda la funcionalidad
+desarrollada anteriormente de manera eficiente con un procesamiento
+paralelo multihilo (o distribuido). Por ejemplo, una aplicación podría
+consistir en resolver la tarea en la que un humano le pasa un objeto real
+a un robot virtual. En este caso, el humano le acercará el objeto sobre la
+palma de su mano a cualquier posición dentro de la zona de alcance del
+robot, para que el sistema de visión lo posicione continuamente durante
+el seguimiento y el robot lo coja. Otro ejemplo de aplicación podría ser un
+juego interactivo entre personas, robots y objetos reales y/o virtuales
+con interfaces humano-máquina basados en visión 3D. (2 puntos)
+ENTREGA DEL PROYECTO 2:
+La fecha límite de entrega de la documentación del proyecto 2 será el martes 16
+de junio. Uno de los alumnos del equipo subirá a su espacio compartido de
+PoliformaT los siguientes documentos:
+1 - una memoria (aprox. 4 páginas). Unas 2 páginas dónde se resuma qué
+se ha hecho y quién lo ha hecho. Otras 2 páginas para detallar el proceso de
+guiado (indicar los prompts) y corrección de la IA.
+2 – todo el código del proyecto en un fichero .zip.
+3 - y la presentación Pecha Kucha.
+Además, todos los estudiantes realizarán un examen de coevaluación por cada
+componente del equipo. Estos exámenes de publicarán en PoliformaT unos días
+antes de la presentación. El retraso en la entrega de la documentación se
+penalizará con un 2.5%, por cada día de retraso.
+Por otra parte, el martes 16 de junio se defenderá oralmente el trabajo
+presentado con un Pecha Kucha. Además, en esta sesión se mostrará una demo
+o un vídeo de la aplicación implementada y se contestará a un turno de preguntas
+moderado por el profesor.
+Tener en cuenta que todos los alumnos del equipo deberéis presentar un Half
+Pecha Kucha (ya sea en este proyecto o en el anterior). La distribución de las
+presentaciones entre los dos proyectos debe ser de 2+3, 2+2 o 1+2 Half Pecha
+Kuchas en el caso de 5, 4 o 3 componentes del equipo respectivamente.
+
+
+IDEA PROPIA PARA ESTE PROOYECTO:
+2 camaras: 1 camara para gestos, 1 camra stereo para profudidad (main)
+idea: un robot digital que se controle mediante los gestos de la mano que se dectan en camara1, este robot se controla en el mundo digital. En el mundo real se contara con un globo verde que se lanza al aire y debe ser trackeado y transportado al mundo digital con posicon (x,y,z).
+El objetivo del juego es que se lance el globo al aire y mediante los gestos de manos mover el robot para que este en su posicion cuando toque el suelo, el robot tendra una hitbox en la que si toca el gemelo digital del globo se contara como punto.
+se va a correr en un macm1 asi que se tiene la idea de emplear su camara para los gestos y usar un movil adnroid xiaomi 17t con sus camaras principales y gran angular para  la camara stereo, al ser una plataforma sin variabiliadad en el setup fisico
+Tambien existe la posibildad de usar solo una camara stereo para ambas funciones, empleando la camara del mac y la camara de selfie
+Sientete libre de adaptar esta idea general para que cumpla con TODOS los requisitos del proyecto
